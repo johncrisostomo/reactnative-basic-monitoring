@@ -6,9 +6,18 @@ import {
 import MainContainer from './src/components/MainContainer';
 
 export default class Monitoring extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isUp: false,
+      lastUpTime: new Date((new Date()).getTime() - 5 * 60 * 1000),
+    };
+  }
+
   render() {
     return (
-      <MainContainer isUp={false} />
+      <MainContainer isUp={this.state.isUp} lastUpTime={this.state.lastUpTime} />
     );
   }
 }
